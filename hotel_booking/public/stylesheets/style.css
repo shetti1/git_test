@@ -1,0 +1,70 @@
+.panel-heading {
+  padding: 5px 15px;
+}
+
+.panel-footer {
+padding: 1px 15px;
+color: #A0A0A0;
+}
+
+.profile-img {
+width: 96px;
+height: 96px;
+margin: 0 auto 10px;
+display: block;
+-moz-border-radius: 50%;
+-webkit-border-radius: 50%;
+border-radius: 50%;
+}
+
+.dat{
+  font-size:20px;
+}
+.dd{font-family: Arial, Helvetica, sans-serif;
+    
+  height:100%;
+  width:100%;
+background-image: url("https://images.alphacoders.com/439/thumb-1920-439191.jpg");
+background-repeat: no-repeat;
+background-size: cover
+}
+
+.button2 {
+background-color: white; 
+color: black; 
+border: 2px solid rgb(242, 245, 242);
+}
+
+.button2:hover {
+background-color: #4CAF50;
+color: white;
+}
+.button {
+background-color: rgb(220, 60, 20);
+color: white;
+padding: 20px 50px;
+margin: 8px 0;
+border: none;
+cursor: pointer;
+font-size: 15px;
+/* width: 25%; */
+}
+.button1 {
+background-color: rgb(220, 60, 20);
+color: white;
+padding: 14px 20px;
+margin: 8px 0;
+border: none;
+cursor: pointer;
+/* width: 50%; */
+}
+.button2 {
+  background-color: rgb(220, 60, 20);
+  color: white;
+  padding: 20px 50px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  /* width: 25%; */
+  }

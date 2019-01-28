@@ -1,0 +1,140 @@
+<html>
+
+<head>
+    <title>Details</title>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+    </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script language="javascript" type="text/javascript">
+        let token = localStorage.getItem('mytoken');
+        $(document).ready(function () {
+
+            //to perform  back event
+            $("#back").click(function () {
+                $.ajax({
+                    url: "/token",
+                    type: 'get',
+                    headers: {
+                        "token": token
+                    },
+                    success: function (data) {
+                        console.log("views");
+                        $('html').html(data);
+                    },
+                    error: function (err) {
+                        console.log("error");
+                        console.log(token);
+                    }
+                })
+            })
+            //to perform logout operation remove token before logout
+
+
+
+            //to delete the particular details from the table
+            $("#table").find('tr').click(function () {
+                var delno = {};
+                delno.Id = $(this).children('td:first').text().trim();
+                var date = $(this).children('td:eq(2)').text().trim();
+                alert("your booking on " + date + " is deleted successfully");
+
+                $.ajax({
+                    url: "/delete",
+                    type: 'delete',
+                    data: delno,
+                    headers: {
+                        "token": token
+                    },
+                    success: function (data) {
+                        console.log("data deleted successfully");
+                        $('html').html(data);
+                    },
+                    error: function (err) {
+                        console.log("error");
+                        console.log(token);
+                    }
+                })
+            })
+        });
+        function mylogout() {
+            let log = confirm("Do you want to logout?");
+            if (log) {
+                localStorage.removeItem('mytoken');
+                window.location.href = "/home";
+            }
+        }
+    </script>
+    <style>
+        /* CSS class  */
+        .d{
+            display:none;
+          }
+        .button {
+            background-color: #f50606; 
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+}
+    </style>
+</head>
+
+<body>
+    <form>
+        <br>
+        <!-- Logout and back button -->
+        <div style="text-align: right">
+            <button type="button" onclick="mylogout()" class=" btn btn-danger " id="logout">Logout</button>
+            <input type="button" class=" btn btn-danger" value="Back" id="back">
+        </div>
+    </form>
+    <!-- to display the booking details of logged user -->
+    <table class="table  table-bordered table-stripped" id="table">
+
+        <tr>
+            <th class="d">Id</th>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Type of table</th>
+        </tr>
+        <%for(let i=0;i < data.length; i++){%>
+        <tr>
+            <td class="d">
+                <%=data[i]._id %>
+            </td>
+            <td>
+
+                <%= data[i].user_name %>
+            </td>
+
+
+            <td>
+                <%= data[i].Date %>
+            </td>
+
+
+            <td>
+                <%= data[i].no_of_seats %>
+            </td>
+            <td>
+                <!-- delete button -->
+                <button type="button" class="button">Delete</button>
+            </td>
+        </tr>
+        <%}%>
+        <% if(data.length == 0){%>
+        <tr>
+            <th>
+                No Records found
+            </th>
+        </tr>
+        <%}%>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<html>
+
+<head>
+    <title>Details</title>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+    </script>
+    <script>
+        function mylogout() {
+            let log = confirm("Do you want to logout?");
+            if (log) {
+                localStorage.removeItem('mytoken');
+                window.location.href = "/home";
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div style="text-align: right">
+        <button type="button" onclick="mylogout()" class=" btn btn-danger " id="logout">Logout</button>
+    </div>
+    <table class="table  table-bordered table-stripped" id="table">
+
+        <tr>
+            
+            <th>Name</th>
+            <th>Date</th>
+            <th>Type of Seat</th>
+
+        </tr>
+        <%for(let i=0;i < data.length; i++){%>
+        <tr>
+            <!-- <td class="d">
+            <%=data[i]._id %>
+        </td> -->
+            <td>
+
+                <%= data[i].user_name %>
+            </td>
+
+
+            <td>
+                <%= data[i].Date %>
+            </td>
+
+
+            <td>
+                <%= data[i].no_of_seats %>
+            </td>
+
+        </tr>
+        <%}%>
+        <% if(data.length == 0){%>
+        <tr>
+            <th>
+                No Records found
+            </th>
+        </tr>
+        <%}%>
+    </table>
+</body>
+
+</html>
