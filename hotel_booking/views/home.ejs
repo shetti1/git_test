@@ -1,0 +1,93 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <title>
+    Book Now
+  </title>
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+  </script>
+
+  <script language="javascript" type="text/javascript">
+   let token = localStorage.getItem('mytoken');
+    $(document).ready(function () {
+     
+      //to perform book event
+      $("#book").click(function () {
+        $.ajax({
+          url: "/book",
+          type: 'get',
+          headers: {
+            "token": token
+          },
+          success: function (data) {
+
+            $("html").html(data);
+          },
+          error: function (err) {
+            console.log("error");
+            console.log(token);
+          }
+        })
+      })
+     
+
+      //to perform view details event
+      $("#viewdetail").click(function () {
+        $.ajax({
+          url: "/viewdetails",
+          type: 'get',
+          headers: {
+            "token": token
+          },
+          success: function (data) {
+            $('html').html(data);
+          },
+          error: function (err) {
+            console.log("error");
+            console.log(token);
+          }
+        })
+      })
+    })
+function mylogout()
+{
+  let log=confirm("Do you want to logout?");
+  if(log)
+  {
+    localStorage.removeItem('mytoken');
+        window.location.href = "/home";
+  }
+}
+  </script>
+  <style>
+
+  </style>
+
+</head>
+
+<body>
+  <div class="dd">
+    <form>
+
+      <br>
+      <div style="text-align: right">
+        <input type="button" onclick="mylogout()" class=" btn btn-danger" value="Logout" id="logout">
+      </div>
+
+      <center>
+        <div style="text-align: center">
+          <input type="button" class="button button2" value="View Details" id="viewdetail">
+        </div>
+        <input type="button" class="button button2" value="Book Now" id="book">
+      </center>
+
+
+    </form>
+  </div>
+</body>
+
+</html>
