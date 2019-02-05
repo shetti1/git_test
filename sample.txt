@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-Hi all ....prasahsahshahsahsh shetti 21212
-=======
-Hi all ....prasahsahshahsahsh  222222 333333 444444
->>>>>>> prashant
+hi global edge
